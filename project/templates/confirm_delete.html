@@ -1,0 +1,8 @@
+<h3>Voulez-vous vraiment supprimer ce message ?</h3>
+<p>{{ contact.name }} - {{ contact.email }}</p>
+
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Oui, supprimer</button>
+  <a href="{% url 'listContact' %}">Annuler</a>
+</form>
