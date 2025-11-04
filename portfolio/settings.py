@@ -43,15 +43,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'crispy_bootstrap5',
-     'corsheaders',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
      'django.middleware.security.SecurityMiddleware',
+     'corsheaders.middleware.CorsMiddleware',   # ⚠️ doit être AVANT CommonMiddleware
      'whitenoise.middleware.WhiteNoiseMiddleware', 
-    'corsheaders.middleware.CorsMiddleware',   # ⚠️ doit être AVANT CommonMiddleware
+     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -148,5 +148,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 CORS_ALLOWED_ORIGINS = [
    "http://localhost:5173",
+   "https://my-portfolio-gamma-eight-43.vercel.app/"
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
 ]
 CORS_ALLOW_CREDENTIALS = True
